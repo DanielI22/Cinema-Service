@@ -16,10 +16,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.project.cinema</groupId>
-    <artifactId>Cinema-User-Service</artifactId>
+    <artifactId>Cinema-Service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Cinema-User-Service</name>
-    <description>Cinema-User-Service</description>
+    <name>Cinema-Service</name>
+    <description>Cinema-Service</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -74,17 +74,19 @@
         </dependency>
     </dependencies>
 
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <version>2021.0.3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
