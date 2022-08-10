@@ -5,7 +5,7 @@ import com.project.cinema.data.entity.ProjectionEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProjectionEntityToProjection {
+public class ProjectionEntityToProjectionResponse {
     public ProjectionResponse map(ProjectionEntity projectionEntity) {
        return ProjectionResponse.builder()
                 .title(projectionEntity.getTitle())

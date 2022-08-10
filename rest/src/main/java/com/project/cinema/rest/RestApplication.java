@@ -13,10 +13,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableFeignClients("com.project")
-@ComponentScan({"com.project.cinema.api" , "com.project.cinema.rest", "com.project.cinema.core", "com.project.cinema.data" ,})
+@ComponentScan({"com.project.cinema"})
 @EnableJpaRepositories("com.project.cinema.data")
 @EntityScan(
-        basePackages = "com.project.cinema.core",
+        basePackages = "com.project.cinema.data",
         basePackageClasses = {ProjectionEntity.class, Genre.class, Ticket.class}
 )
 public class RestApplication {

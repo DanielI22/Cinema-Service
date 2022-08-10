@@ -1,5 +1,6 @@
 package com.project.cinema.data.crud.implmentation;
 
+import com.project.cinema.data.crud.exception.MovieNotFoundException;
 import com.project.cinema.data.crud.interfaces.ProjectionReadService;
 import com.project.cinema.data.crud.model.response.ProjectionResponse;
 import com.project.cinema.data.entity.ProjectionEntity;
@@ -18,19 +19,18 @@ public class ProjectionReadServiceImpl implements ProjectionReadService {
 
     @Override
     public ProjectionResponse getProjection(Long id) {
-        Optional<ProjectionEntity> projection =
-                Optional.ofNullable(projectionRepository.findById(id).orElseThrow());
+        ProjectionEntity projection = projectionRepository.findById(id).orElseThrow(MovieNotFoundException::new);
 
         return ProjectionResponse.builder()
-                .title(projection.get().getTitle())
-                .description(projection.get().getDescription())
-                .genre(projection.get().getGenre().getGenreName())
-                .releaseDate(projection.get().getReleaseDate())
-                .rating(projection.get().getRating())
-                .projectionDate(projection.get().getProjectionDate())
-                .projectionTime(projection.get().getProjectionTime())
-                .ticketPrice(projection.get().getTicketPrice())
-                .capacity(projection.get().getCapacity())
+                .title(projection.getTitle())
+                .description(projection.getDescription())
+                .genre(projection.getGenre().getGenreName())
+                .releaseDate(projection.getReleaseDate())
+                .rating(projection.getRating())
+                .projectionDate(projection.getProjectionDate())
+                .projectionTime(projection.getProjectionTime())
+                .ticketPrice(projection.getTicketPrice())
+                .capacity(projection.getCapacity())
                 .build();
     }
 }

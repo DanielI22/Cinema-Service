@@ -11,6 +11,20 @@
 
     <groupId>com.project.cinema</groupId>
     <artifactId>core</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.project.cinema</groupId>
+            <artifactId>data</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.project.cinema</groupId>
+            <artifactId>api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

@@ -1,5 +1,6 @@
 package com.project.cinema.data.crud.implmentation;
 
+import com.project.cinema.data.crud.exception.MovieNotFoundException;
 import com.project.cinema.data.crud.interfaces.ProjectionDeleteService;
 import com.project.cinema.data.repository.ProjectionRepository;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,10 @@ public class ProjectionDeleteServiceImpl implements ProjectionDeleteService {
     }
 
     @Override
-    public Long deleteProjection(Long id) {
+    public void deleteProjection(Long id) {
+        if(!projectionRepository.existsById(id)) {
+            throw new MovieNotFoundException();
+        }
         projectionRepository.deleteById(id);
-        return id;
     }
 }

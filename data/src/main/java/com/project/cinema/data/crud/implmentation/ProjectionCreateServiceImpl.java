@@ -2,6 +2,7 @@ package com.project.cinema.data.crud.implmentation;
 
 import com.project.api.feign.MovieClient;
 import com.project.api.model.MovieResponse;
+import com.project.cinema.data.crud.exception.MovieNotFoundException;
 import com.project.cinema.data.crud.interfaces.ProjectionCreateService;
 import com.project.cinema.data.crud.model.request.ProjectionCreateRequest;
 import com.project.cinema.data.entity.Genre;
@@ -24,7 +25,13 @@ public class ProjectionCreateServiceImpl implements ProjectionCreateService {
 
     public Long createProjection(ProjectionCreateRequest projectionCreateRequest) {
 
-        MovieResponse movieResponse = movieClient.getMovie(projectionCreateRequest.getMovieId());
+        MovieResponse movieResponse;
+        try {
+            movieResponse = movieClient.getMovie(projectionCreateRequest.getMovieId());
+        }
+        catch (Exception e) {
+            throw new MovieNotFoundException();
+        }
 
         if(!genreRepository.existsByGenreName(movieResponse.getGenre())) {
             Genre genre = new Genre();
@@ -35,7 +42,7 @@ public class ProjectionCreateServiceImpl implements ProjectionCreateService {
         ProjectionEntity projection =new ProjectionEntity();
         projection.setTitle(movieResponse.getTitle());
         projection.setDescription(movieResponse.getDescription());
-        projection.setGenreId(genreRepository.findByGenreName(movieResponse.getGenre()).getGenreId());
+        projection.setGenreId(genreRepository.findByGenreName(movieResponse.getGenre()).orElseThrow().getGenreId());
         projection.setReleaseDate(movieResponse.getReleaseDate());
         projection.setRating(movieResponse.getRating());
         projection.setProjectionDate(projectionCreateRequest.getDate());

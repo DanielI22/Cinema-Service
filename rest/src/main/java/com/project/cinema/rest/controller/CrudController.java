@@ -26,24 +26,24 @@ public class CrudController {
     }
 
 
-    @PostMapping("/projection/")
+    @PostMapping("/admin/create")
     public Long createProjection(@Valid @RequestBody ProjectionCreateRequest projectionCreateRequest) {
         return projectionCreateService.createProjection(projectionCreateRequest);
     }
 
-    @GetMapping("/projection/")
+    @GetMapping("/admin/get")
     public ProjectionResponse getPlace(@RequestParam Long id) {
         return projectionReadService.getProjection(id);
     }
 
-    @DeleteMapping("/projection/")
+    @DeleteMapping("/admin/delete")
     public Long deletePlace(@RequestParam Long id) {
         projectionDeleteService.deleteProjection(id);
         return id;
     }
 
-    @PutMapping("/projection/")
-    public ProjectionResponse updatePlace(@RequestParam Long id, @RequestBody ProjectionPutRequest projectionPutRequest) {
+    @PutMapping("/admin/update")
+    public ProjectionResponse updatePlace(@RequestParam Long id, @Valid @RequestBody ProjectionPutRequest projectionPutRequest) {
         return projectionPutService.updateProjection(id, projectionPutRequest);
     }
 }
