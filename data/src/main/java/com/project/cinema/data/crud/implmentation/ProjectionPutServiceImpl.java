@@ -3,6 +3,7 @@ package com.project.cinema.data.crud.implmentation;
 import com.project.api.feign.MovieClient;
 import com.project.api.model.MovieResponse;
 import com.project.cinema.data.crud.exception.MovieNotFoundException;
+import com.project.cinema.data.crud.exception.ServerUnavailableException;
 import com.project.cinema.data.crud.interfaces.ProjectionPutService;
 import com.project.cinema.data.crud.mapper.ProjectionEntityToProjectionResponse;
 import com.project.cinema.data.crud.model.request.ProjectionPutRequest;
@@ -11,6 +12,7 @@ import com.project.cinema.data.entity.Genre;
 import com.project.cinema.data.entity.ProjectionEntity;
 import com.project.cinema.data.repository.GenreRepository;
 import com.project.cinema.data.repository.ProjectionRepository;
+import feign.FeignException;
 import org.springframework.stereotype.Service;
 
 
@@ -36,8 +38,11 @@ public class ProjectionPutServiceImpl implements ProjectionPutService {
         try {
             movieResponse = movieClient.getMovie(projectionPutRequest.getMovieId());
         }
-        catch (Exception e) {
+        catch (FeignException.FeignClientException e) {
             throw new MovieNotFoundException();
+        }
+        catch (FeignException e) {
+            throw new ServerUnavailableException();
         }
 
         if(!genreRepository.existsByGenreName(movieResponse.getGenre())) {

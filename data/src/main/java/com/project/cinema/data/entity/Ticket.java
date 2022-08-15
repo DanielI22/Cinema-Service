@@ -1,6 +1,8 @@
 package com.project.cinema.data.entity;
 
 
+import com.project.cinema.data.ticketEnum.TicketStatus;
+import com.project.cinema.data.ticketEnum.TicketType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +18,15 @@ public class Ticket {
     private Long ticketId;
     private Long projectionId;
     private Long userId;
+    @Enumerated(EnumType.STRING)
+    private TicketType type;
     private Double ticketPrice;
+    @Enumerated(EnumType.STRING)
+    private TicketStatus status;
 
     @ManyToOne
     @JoinColumn(name="projectionId",insertable = false,updatable = false)
     private ProjectionEntity projection;
 }
+
+

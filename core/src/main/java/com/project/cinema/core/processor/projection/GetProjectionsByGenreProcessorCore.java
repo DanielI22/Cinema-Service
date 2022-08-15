@@ -1,12 +1,12 @@
-package com.project.cinema.core.processor;
+package com.project.cinema.core.processor.projection;
 
 import com.project.cinema.api.base.Error;
-import com.project.cinema.api.error.GenreNotFoundError;
+import com.project.cinema.api.error.projection.GenreNotFoundError;
 import com.project.cinema.api.error.ServiceUnavailableError;
-import com.project.cinema.api.model.request.GetProjectionsByGenreRequest;
-import com.project.cinema.api.model.response.GetProjectionsByGenreResponse;
-import com.project.cinema.api.model.response.ProjectionResponse;
-import com.project.cinema.api.operation.GetProjectionsByGenreProcessor;
+import com.project.cinema.api.model.request.projection.GetProjectionsByGenreRequest;
+import com.project.cinema.api.model.response.projection.GetProjectionsByGenreResponse;
+import com.project.cinema.api.model.response.projection.ProjectionResponse;
+import com.project.cinema.api.operation.projection.GetProjectionsByGenreProcessor;
 import com.project.cinema.data.entity.Genre;
 import com.project.cinema.data.entity.ProjectionEntity;
 import com.project.cinema.data.repository.GenreRepository;
@@ -39,6 +39,7 @@ public class GetProjectionsByGenreProcessorCore implements GetProjectionsByGenre
             final List<ProjectionEntity> projections = projectionRepository.findAllByGenre(genre);
             return GetProjectionsByGenreResponse
                     .builder()
+                    .genre(genre.getGenreName())
                     .projectionResponses(projections
                             .stream()
                             .map(pr -> conversionService.convert(pr, ProjectionResponse.class))

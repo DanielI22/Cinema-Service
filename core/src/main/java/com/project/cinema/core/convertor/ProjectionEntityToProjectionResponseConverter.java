@@ -1,6 +1,6 @@
 package com.project.cinema.core.convertor;
 
-import com.project.cinema.api.model.response.ProjectionResponse;
+import com.project.cinema.api.model.response.projection.ProjectionResponse;
 import com.project.cinema.data.entity.ProjectionEntity;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -10,6 +10,7 @@ public class ProjectionEntityToProjectionResponseConverter implements Converter<
     @Override
     public ProjectionResponse convert(ProjectionEntity source) {
         return ProjectionResponse.builder()
+                .projectionId(String.valueOf(source.getProjectionId()))
                 .title(source.getTitle())
                 .description(source.getDescription())
                 .genre(source.getGenre().getGenreName())

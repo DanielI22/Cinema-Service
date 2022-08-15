@@ -1,4 +1,4 @@
-package com.project.cinema.api.error;
+package com.project.cinema.api.error.projection;
 
 import com.project.cinema.api.base.Error;
 import org.springframework.http.HttpStatus;

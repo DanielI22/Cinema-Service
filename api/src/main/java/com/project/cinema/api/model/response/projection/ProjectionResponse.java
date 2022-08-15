@@ -1,4 +1,4 @@
-package com.project.cinema.api.model.response;
+package com.project.cinema.api.model.response.projection;
 
 import com.project.cinema.api.base.OperationResult;
 import lombok.*;
@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectionResponse implements OperationResult {
+    private String projectionId;
     private String title;
     private String description;
     private String genre;

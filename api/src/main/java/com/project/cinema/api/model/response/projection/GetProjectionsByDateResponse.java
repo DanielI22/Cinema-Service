@@ -1,4 +1,4 @@
-package com.project.cinema.api.model.response;
+package com.project.cinema.api.model.response.projection;
 
 import com.project.cinema.api.base.OperationResult;
 import lombok.*;
@@ -10,6 +10,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetProjectionsByGenreResponse implements OperationResult {
+public class GetProjectionsByDateResponse implements OperationResult {
+    private String startProjectionDate;
+    private String endProjectionDate;
     private List<ProjectionResponse> projectionResponses;
 }
