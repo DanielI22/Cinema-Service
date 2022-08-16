@@ -11,7 +11,6 @@ import lombok.*;
 public class TicketResponse {
     private String ticketId;
     private String projectionId;
-//    private String userId;
     private String type;
     private String price;
     private String status;

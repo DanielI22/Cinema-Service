@@ -3,7 +3,7 @@ package com.project.cinema.core.processor.projection;
 import com.project.cinema.api.base.Error;
 import com.project.cinema.api.error.projection.ProjectionsNotFoundError;
 import com.project.cinema.api.error.ServiceUnavailableError;
-import com.project.cinema.api.model.request.projection.EmptyRequest;
+import com.project.cinema.api.model.request.EmptyRequest;
 import com.project.cinema.api.model.response.projection.GetProjectionsSortedByRatingResponse;
 import com.project.cinema.api.model.response.projection.ProjectionResponse;
 import com.project.cinema.api.operation.projection.GetProjectionsSortedByRatingProcessor;

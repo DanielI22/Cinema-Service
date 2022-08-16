@@ -1,6 +1,7 @@
 package com.project.cinema.rest.controller;
 
 import com.project.cinema.api.base.Error;
+import com.project.cinema.api.model.request.EmptyRequest;
 import com.project.cinema.api.model.request.projection.*;
 import com.project.cinema.api.model.response.projection.*;
 import com.project.cinema.api.operation.projection.*;

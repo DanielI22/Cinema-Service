@@ -13,7 +13,7 @@ public class TicketEntityToTicketResponseConverter implements Converter<Ticket, 
                 .ticketId(String.valueOf(source.getTicketId()))
                 .projectionId(String.valueOf(source.getProjectionId()))
                 .type(String.valueOf(source.getType()))
-                .price(String.valueOf(source.getTicketPrice()))
+                .price(String.format("%.2f", source.getTicketPrice()))
                 .status(String.valueOf(source.getStatus()))
                 .build();
     }

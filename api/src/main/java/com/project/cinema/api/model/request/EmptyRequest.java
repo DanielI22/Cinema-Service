@@ -1,4 +1,4 @@
-package com.project.cinema.api.model.request.projection;
+package com.project.cinema.api.model.request;
 
 import com.project.cinema.api.base.OperationInput;
 
