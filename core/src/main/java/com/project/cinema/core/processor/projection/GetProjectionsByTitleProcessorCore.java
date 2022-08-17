@@ -7,7 +7,7 @@ import com.project.cinema.api.model.request.projection.GetProjectionsByTitleRequ
 import com.project.cinema.api.model.response.projection.GetProjectionsByTitleResponse;
 import com.project.cinema.api.model.response.projection.ProjectionResponse;
 import com.project.cinema.api.operation.projection.GetProjectionsByTitleProcessor;
-import com.project.cinema.core.exception.NoProjectionsFoundException;
+import com.project.cinema.core.exception.ProjectionNotFoundException;
 import com.project.cinema.data.entity.ProjectionEntity;
 import com.project.cinema.data.repository.ProjectionRepository;
 import io.vavr.control.Either;
@@ -34,7 +34,7 @@ public class GetProjectionsByTitleProcessorCore implements GetProjectionsByTitle
                     final List<ProjectionEntity> projections = projectionRepository
                             .findAllByTitle(getProjectionsByTitleRequest.getTitle());
                     if(projections.isEmpty()) {
-                        throw new NoProjectionsFoundException();
+                        throw new ProjectionNotFoundException();
                     }
                     return GetProjectionsByTitleResponse
                             .builder()
@@ -47,7 +47,7 @@ public class GetProjectionsByTitleProcessorCore implements GetProjectionsByTitle
 
                 }).toEither()
                 .mapLeft(throwable -> {
-                    if(throwable instanceof NoProjectionsFoundException) {
+                    if(throwable instanceof ProjectionNotFoundException) {
                         return new ProjectionsNotFoundError();
                     }
                     return new ServiceUnavailableError();

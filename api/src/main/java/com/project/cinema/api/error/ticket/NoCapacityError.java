@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 public class NoCapacityError implements Error {
     @Override
     public String getMessage() {
-        return "No available seats for this projection";
+        return "No available seats for this projection!";
     }
 
     @Override

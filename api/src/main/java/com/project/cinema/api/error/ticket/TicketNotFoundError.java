@@ -1,16 +1,16 @@
-package com.project.cinema.api.error;
+package com.project.cinema.api.error.ticket;
 
 import com.project.cinema.api.base.Error;
 import org.springframework.http.HttpStatus;
 
-public class ServiceUnavailableError implements Error {
+public class TicketNotFoundError implements Error {
     @Override
     public String getMessage() {
-        return "Server Error!";
+        return "Requested Ticket Not Found!";
     }
 
     @Override
     public HttpStatus getCode() {
-        return HttpStatus.SERVICE_UNAVAILABLE;
+        return HttpStatus.NOT_FOUND;
     }
 }

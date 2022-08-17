@@ -7,7 +7,7 @@ import com.project.cinema.api.model.request.EmptyRequest;
 import com.project.cinema.api.model.response.ticket.TicketResponse;
 import com.project.cinema.api.model.response.ticket.UserTicketsResponse;
 import com.project.cinema.api.operation.ticket.GetUserTicketsProcessor;
-import com.project.cinema.core.exception.TicketsNotFoundException;
+import com.project.cinema.core.exception.TicketNotFoundException;
 import com.project.cinema.data.entity.Ticket;
 import com.project.cinema.data.repository.TicketRepository;
 import io.vavr.control.Either;
@@ -33,7 +33,7 @@ public class GetUserTicketsProcessorCore implements GetUserTicketsProcessor {
         return Try.of(() -> {
             final List<Ticket> tickets = ticketRepository.findAllByUserId(1L);
             if(tickets.isEmpty()) {
-                throw new TicketsNotFoundException();
+                throw new TicketNotFoundException();
             }
             return UserTicketsResponse
                     .builder()
@@ -44,7 +44,7 @@ public class GetUserTicketsProcessorCore implements GetUserTicketsProcessor {
                     .build();
         }).toEither()
                 .mapLeft(throwable -> {
-                    if(throwable instanceof TicketsNotFoundException) {
+                    if(throwable instanceof TicketNotFoundException) {
                         return new TicketsNotFoundError();
                     }
                     return new ServiceUnavailableError();

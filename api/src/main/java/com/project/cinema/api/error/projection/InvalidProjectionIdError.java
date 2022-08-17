@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 public class InvalidProjectionIdError implements Error {
     @Override
     public String getMessage() {
-        return "The entered projections Id is invalid";
+        return "The entered projections Id is invalid!";
     }
 
     @Override
