@@ -10,7 +10,7 @@ movie-info-service с външно api, което взима информаци
 
 pricing-service - за изичесляване на цената на билета в зависимиост от типа на билета и капацитета на залата. Линк: https://github.com/DanielI22/Pricing-Service.git
 
-payment-service - за ауторизация на плащането при купуване на билет.
+payment-service - за ауторизация на плащането при купуване на билет. Линк: https://github.com/DanielI22/Payment-Service.git
 
 Операции:
 
