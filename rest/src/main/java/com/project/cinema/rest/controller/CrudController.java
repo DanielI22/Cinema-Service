@@ -7,10 +7,12 @@ import com.project.cinema.data.crud.interfaces.ProjectionReadService;
 import com.project.cinema.data.crud.model.request.ProjectionCreateRequest;
 import com.project.cinema.data.crud.model.request.ProjectionPutRequest;
 import com.project.cinema.data.crud.model.response.ProjectionResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@SecurityRequirement(name = "basicAuth")
 @RestController
 public class CrudController {
     private final ProjectionCreateService projectionCreateService;

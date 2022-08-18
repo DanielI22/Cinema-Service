@@ -6,16 +6,12 @@ import com.project.cinema.data.crud.exception.MovieNotFoundException;
 import com.project.cinema.data.crud.exception.ServerUnavailableException;
 import com.project.cinema.data.crud.interfaces.ProjectionCreateService;
 import com.project.cinema.data.crud.model.request.ProjectionCreateRequest;
-import com.project.cinema.data.entity.Genre;
-import com.project.cinema.data.entity.ProjectionEntity;
-import com.project.cinema.data.repository.GenreRepository;
-import com.project.cinema.data.repository.ProjectionRepository;
+import com.project.cinema.data.entity.projection.Genre;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
+import com.project.cinema.data.repository.projection.GenreRepository;
+import com.project.cinema.data.repository.projection.ProjectionRepository;
 import feign.FeignException;
-import feign.RetryableException;
 import org.springframework.stereotype.Service;
-
-import java.net.ConnectException;
-import java.rmi.ServerException;
 
 @Service
 public class ProjectionCreateServiceImpl implements ProjectionCreateService {

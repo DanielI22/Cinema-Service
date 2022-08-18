@@ -7,10 +7,10 @@ import com.project.cinema.api.model.request.projection.GetProjectionsByGenreRequ
 import com.project.cinema.api.model.response.projection.GetProjectionsByGenreResponse;
 import com.project.cinema.api.model.response.projection.ProjectionResponse;
 import com.project.cinema.api.operation.projection.GetProjectionsByGenreProcessor;
-import com.project.cinema.data.entity.Genre;
-import com.project.cinema.data.entity.ProjectionEntity;
-import com.project.cinema.data.repository.GenreRepository;
-import com.project.cinema.data.repository.ProjectionRepository;
+import com.project.cinema.data.entity.projection.Genre;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
+import com.project.cinema.data.repository.projection.GenreRepository;
+import com.project.cinema.data.repository.projection.ProjectionRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.springframework.core.convert.ConversionService;

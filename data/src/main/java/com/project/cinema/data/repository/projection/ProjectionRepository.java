@@ -1,7 +1,7 @@
-package com.project.cinema.data.repository;
+package com.project.cinema.data.repository.projection;
 
-import com.project.cinema.data.entity.Genre;
-import com.project.cinema.data.entity.ProjectionEntity;
+import com.project.cinema.data.entity.projection.Genre;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

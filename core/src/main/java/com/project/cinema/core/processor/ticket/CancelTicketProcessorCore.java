@@ -8,28 +8,33 @@ import com.project.cinema.api.model.response.ticket.CancelTicketResponse;
 import com.project.cinema.api.model.response.ticket.TicketResponse;
 import com.project.cinema.api.operation.ticket.CancelTicketProcessor;
 import com.project.cinema.core.exception.TicketNotFoundException;
-import com.project.cinema.data.entity.ProjectionEntity;
-import com.project.cinema.data.entity.Ticket;
-import com.project.cinema.data.repository.ProjectionRepository;
-import com.project.cinema.data.repository.TicketRepository;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
+import com.project.cinema.data.entity.projection.Ticket;
+import com.project.cinema.data.entity.user.User;
+import com.project.cinema.data.repository.projection.ProjectionRepository;
+import com.project.cinema.data.repository.projection.TicketRepository;
+import com.project.cinema.data.repository.user.UserRepository;
 import com.project.cinema.data.ticketEnum.TicketStatus;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
+import java.util.Objects;
 
 @Service
 public class CancelTicketProcessorCore implements CancelTicketProcessor {
     private final TicketRepository ticketRepository;
     private final ProjectionRepository projectionRepository;
     private final ConversionService conversionService;
+    private final UserRepository userRepository;
 
-    public CancelTicketProcessorCore(TicketRepository ticketRepository, ProjectionRepository projectionRepository, ConversionService conversionService) {
+    public CancelTicketProcessorCore(TicketRepository ticketRepository, ProjectionRepository projectionRepository, ConversionService conversionService, UserRepository userRepository) {
         this.ticketRepository = ticketRepository;
         this.projectionRepository = projectionRepository;
         this.conversionService = conversionService;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -39,8 +44,12 @@ public class CancelTicketProcessorCore implements CancelTicketProcessor {
             if(ticket.getStatus() == TicketStatus.CANCELED) {
                 throw new IllegalArgumentException();
             }
+            final User user = userRepository.findByUserName(
+                    SecurityContextHolder.getContext().getAuthentication().getName()).orElseThrow();
 
-//            if(ticket.getUserId() != currentuserid)
+            if(!Objects.equals(ticket.getUserId(), user.getId())) {
+                throw new TicketNotFoundException();
+            }
 
             final ProjectionEntity projection = projectionRepository.findById(ticket.getProjectionId()).orElseThrow();
             projection.setCapacity(projection.getCapacity()+1);
