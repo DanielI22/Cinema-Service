@@ -8,8 +8,8 @@ import com.project.cinema.api.model.response.projection.GetProjectionsSortedByRa
 import com.project.cinema.api.model.response.projection.ProjectionResponse;
 import com.project.cinema.api.operation.projection.GetProjectionsSortedByRatingProcessor;
 import com.project.cinema.core.exception.ProjectionNotFoundException;
-import com.project.cinema.data.entity.ProjectionEntity;
-import com.project.cinema.data.repository.ProjectionRepository;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
+import com.project.cinema.data.repository.projection.ProjectionRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.springframework.core.convert.ConversionService;

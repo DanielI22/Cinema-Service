@@ -3,11 +3,9 @@ package com.project.cinema.data.crud.implmentation;
 import com.project.cinema.data.crud.exception.MovieNotFoundException;
 import com.project.cinema.data.crud.interfaces.ProjectionReadService;
 import com.project.cinema.data.crud.model.response.ProjectionResponse;
-import com.project.cinema.data.entity.ProjectionEntity;
-import com.project.cinema.data.repository.ProjectionRepository;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
+import com.project.cinema.data.repository.projection.ProjectionRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class ProjectionReadServiceImpl implements ProjectionReadService {

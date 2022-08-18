@@ -8,10 +8,10 @@ import com.project.cinema.data.crud.interfaces.ProjectionPutService;
 import com.project.cinema.data.crud.mapper.ProjectionEntityToProjectionResponse;
 import com.project.cinema.data.crud.model.request.ProjectionPutRequest;
 import com.project.cinema.data.crud.model.response.ProjectionResponse;
-import com.project.cinema.data.entity.Genre;
-import com.project.cinema.data.entity.ProjectionEntity;
-import com.project.cinema.data.repository.GenreRepository;
-import com.project.cinema.data.repository.ProjectionRepository;
+import com.project.cinema.data.entity.projection.Genre;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
+import com.project.cinema.data.repository.projection.GenreRepository;
+import com.project.cinema.data.repository.projection.ProjectionRepository;
 import feign.FeignException;
 import org.springframework.stereotype.Service;
 

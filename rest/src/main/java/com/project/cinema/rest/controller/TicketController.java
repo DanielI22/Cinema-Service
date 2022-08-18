@@ -13,11 +13,14 @@ import com.project.cinema.api.operation.ticket.BuyTicketProcessor;
 import com.project.cinema.api.operation.ticket.CancelTicketProcessor;
 import com.project.cinema.api.operation.ticket.GetUserTicketsProcessor;
 import com.project.cinema.api.operation.ticket.ReserveTicketProcessor;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.vavr.control.Either;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+@SecurityRequirement(name = "basicAuth")
 @RestController
 public class TicketController {
     private final ReserveTicketProcessor reserveTicketProcessor;
@@ -32,7 +35,7 @@ public class TicketController {
         this.getUserTicketsProcessor = getUserTicketsProcessor;
     }
 
-    @PostMapping("/ticket/reserve")
+    @PostMapping("/tickets/reserve")
     public ResponseEntity<?> reserveTicket(@RequestBody ReserveTicketRequest reserveTicketRequest){
         Either<Error, ReserveTicketResponse> result = reserveTicketProcessor
                 .process(reserveTicketRequest);
@@ -43,7 +46,7 @@ public class TicketController {
         return ResponseEntity.status(HttpStatus.OK).body(result.get());
     }
 
-    @PostMapping("/ticket/buy")
+    @PostMapping("/tickets/buy")
     public ResponseEntity<?> buyTicket(@RequestBody BuyTicketRequest buyTicketRequest){
         Either<Error, BuyTicketResponse> result = buyTicketProcessor.process(buyTicketRequest);
 
@@ -53,7 +56,7 @@ public class TicketController {
         return ResponseEntity.status(HttpStatus.OK).body(result.get());
     }
 
-    @PutMapping("/ticket/cancel")
+    @PutMapping("/tickets/cancel")
     public ResponseEntity<?> cancelTicket(@RequestBody CancelTicketRequest cancelTicketRequest){
         Either<Error, CancelTicketResponse> result = cancelTicketProcessor.process(cancelTicketRequest);
 

@@ -1,7 +1,7 @@
 package com.project.cinema.core.convertor;
 
 import com.project.cinema.api.model.response.ticket.TicketResponse;
-import com.project.cinema.data.entity.Ticket;
+import com.project.cinema.data.entity.projection.Ticket;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

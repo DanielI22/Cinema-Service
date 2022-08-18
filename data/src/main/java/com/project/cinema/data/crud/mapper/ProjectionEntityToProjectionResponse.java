@@ -1,7 +1,7 @@
 package com.project.cinema.data.crud.mapper;
 
 import com.project.cinema.data.crud.model.response.ProjectionResponse;
-import com.project.cinema.data.entity.ProjectionEntity;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -10,18 +10,20 @@ import com.project.cinema.api.model.response.ticket.ReserveTicketResponse;
 import com.project.cinema.api.model.response.ticket.TicketResponse;
 import com.project.cinema.api.operation.ticket.ReserveTicketProcessor;
 import com.project.cinema.core.exception.NoCapacityException;
-import com.project.cinema.data.entity.ProjectionEntity;
-import com.project.cinema.data.entity.Ticket;
+import com.project.cinema.data.entity.projection.ProjectionEntity;
+import com.project.cinema.data.entity.projection.Ticket;
+import com.project.cinema.data.entity.user.User;
+import com.project.cinema.data.repository.user.UserRepository;
 import com.project.cinema.data.ticketEnum.TicketStatus;
-import com.project.cinema.data.repository.ProjectionRepository;
-import com.project.cinema.data.repository.TicketRepository;
+import com.project.cinema.data.repository.projection.ProjectionRepository;
+import com.project.cinema.data.repository.projection.TicketRepository;
 import com.project.cinema.data.ticketEnum.TicketType;
 import com.project.pricing.api.feign.PricingClient;
 import com.project.pricing.api.model.PricingRequest;
-import feign.FeignException;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -32,12 +34,15 @@ public class ReserveTicketProcessorCore implements ReserveTicketProcessor {
     private final ProjectionRepository projectionRepository;
     private final ConversionService conversionService;
     private final PricingClient pricingClient;
+    private final UserRepository userRepository;
 
-    public ReserveTicketProcessorCore(TicketRepository ticketRepository, ProjectionRepository projectionRepository, ConversionService conversionService, PricingClient pricingClient) {
+
+    public ReserveTicketProcessorCore(TicketRepository ticketRepository, ProjectionRepository projectionRepository, ConversionService conversionService, PricingClient pricingClient, UserRepository userRepository) {
         this.ticketRepository = ticketRepository;
         this.projectionRepository = projectionRepository;
         this.conversionService = conversionService;
         this.pricingClient = pricingClient;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -48,8 +53,12 @@ public class ReserveTicketProcessorCore implements ReserveTicketProcessor {
                 throw new NoCapacityException();
             }
 
+           final User user = userRepository
+                   .findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).orElseThrow();
+
             Ticket ticket = new Ticket();
             ticket.setProjectionId(ticketRequest.getProjectionId());
+            ticket.setUserId(user.getId());
             ticket.setType(TicketType.valueOf(ticketRequest.getTicketType().toUpperCase()));
             ticket.setTicketPrice(pricingClient
                 .calculateTicketPrice(PricingRequest
