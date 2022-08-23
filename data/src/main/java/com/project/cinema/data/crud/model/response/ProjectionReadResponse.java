@@ -11,7 +11,9 @@ import java.time.LocalTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectionResponse {
+@EqualsAndHashCode
+@ToString
+public class ProjectionReadResponse {
     private String title;
     private String description;
     private String genre;

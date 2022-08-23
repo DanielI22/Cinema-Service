@@ -38,20 +38,20 @@ import java.util.NoSuchElementException;
 
 @Service
 public class BuyTicketProcessorCore implements BuyTicketProcessor {
-    private final TicketRepository ticketRepository;
     private final ProjectionRepository projectionRepository;
+    private final TicketRepository ticketRepository;
+    private final UserRepository userRepository;
     private final ConversionService conversionService;
     private final PricingClient pricingClient;
     private final PaymentClient paymentClient;
-    private final UserRepository userRepository;
 
     public BuyTicketProcessorCore(TicketRepository ticketRepository, ProjectionRepository projectionRepository, ConversionService conversionService, PricingClient pricingClient, PaymentClient paymentClient, UserRepository userRepository) {
-        this.ticketRepository = ticketRepository;
         this.projectionRepository = projectionRepository;
+        this.ticketRepository = ticketRepository;
+        this.userRepository = userRepository;
         this.conversionService = conversionService;
         this.pricingClient = pricingClient;
         this.paymentClient = paymentClient;
-        this.userRepository = userRepository;
     }
 
     @Override

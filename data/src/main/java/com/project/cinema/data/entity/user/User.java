@@ -1,7 +1,6 @@
 package com.project.cinema.data.entity.user;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -9,6 +8,10 @@ import javax.persistence.*;
 @Table(name = "USER")
 @Getter
 @Setter
+@EqualsAndHashCode
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

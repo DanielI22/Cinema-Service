@@ -3,8 +3,7 @@ package com.project.cinema.data.entity.projection;
 
 import com.project.cinema.data.ticketEnum.TicketStatus;
 import com.project.cinema.data.ticketEnum.TicketType;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +11,10 @@ import javax.persistence.*;
 @Table(name = "TICKET")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@Builder
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

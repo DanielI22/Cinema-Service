@@ -10,6 +10,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class GetProjectionsByGenreResponse implements OperationResult {
     private String genre;
     private List<ProjectionResponse> projectionResponses;

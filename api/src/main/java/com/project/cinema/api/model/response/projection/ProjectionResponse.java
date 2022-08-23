@@ -8,6 +8,8 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class ProjectionResponse implements OperationResult {
     private String projectionId;
     private String title;

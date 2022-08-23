@@ -10,6 +10,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class UserTicketsResponse implements OperationResult {
     private String userId;
     private List<TicketResponse> tickets;

@@ -10,6 +10,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class GetProjectionsSortedByRatingResponse implements OperationResult {
     private List<ProjectionResponse> projectionResponses;
 }

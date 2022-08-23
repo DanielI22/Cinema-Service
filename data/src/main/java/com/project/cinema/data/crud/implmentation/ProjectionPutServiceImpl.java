@@ -7,7 +7,7 @@ import com.project.cinema.data.crud.exception.ServerUnavailableException;
 import com.project.cinema.data.crud.interfaces.ProjectionPutService;
 import com.project.cinema.data.crud.mapper.ProjectionEntityToProjectionResponse;
 import com.project.cinema.data.crud.model.request.ProjectionPutRequest;
-import com.project.cinema.data.crud.model.response.ProjectionResponse;
+import com.project.cinema.data.crud.model.response.ProjectionReadResponse;
 import com.project.cinema.data.entity.projection.Genre;
 import com.project.cinema.data.entity.projection.ProjectionEntity;
 import com.project.cinema.data.repository.projection.GenreRepository;
@@ -31,7 +31,7 @@ public class ProjectionPutServiceImpl implements ProjectionPutService {
     }
 
     @Override
-    public ProjectionResponse updateProjection(Long id, ProjectionPutRequest projectionPutRequest) {
+    public ProjectionReadResponse updateProjection(Long id, ProjectionPutRequest projectionPutRequest) {
         ProjectionEntity projection = projectionRepository.findById(id).orElseThrow(MovieNotFoundException::new);
 
         MovieResponse movieResponse;

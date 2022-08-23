@@ -8,6 +8,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class TicketResponse {
     private String ticketId;
     private String projectionId;

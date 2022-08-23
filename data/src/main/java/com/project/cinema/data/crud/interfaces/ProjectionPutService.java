@@ -2,8 +2,8 @@ package com.project.cinema.data.crud.interfaces;
 
 
 import com.project.cinema.data.crud.model.request.ProjectionPutRequest;
-import com.project.cinema.data.crud.model.response.ProjectionResponse;
+import com.project.cinema.data.crud.model.response.ProjectionReadResponse;
 
 public interface ProjectionPutService {
-    ProjectionResponse updateProjection(Long id, ProjectionPutRequest placePutRequest);
+    ProjectionReadResponse updateProjection(Long id, ProjectionPutRequest placePutRequest);
 }

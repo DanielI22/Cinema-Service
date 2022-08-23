@@ -6,7 +6,7 @@ import com.project.cinema.data.crud.interfaces.ProjectionPutService;
 import com.project.cinema.data.crud.interfaces.ProjectionReadService;
 import com.project.cinema.data.crud.model.request.ProjectionCreateRequest;
 import com.project.cinema.data.crud.model.request.ProjectionPutRequest;
-import com.project.cinema.data.crud.model.response.ProjectionResponse;
+import com.project.cinema.data.crud.model.response.ProjectionReadResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +34,7 @@ public class CrudController {
     }
 
     @GetMapping("/admin/get")
-    public ProjectionResponse getPlace(@RequestParam Long id) {
+    public ProjectionReadResponse getPlace(@RequestParam Long id) {
         return projectionReadService.getProjection(id);
     }
 
@@ -45,7 +45,7 @@ public class CrudController {
     }
 
     @PutMapping("/admin/update")
-    public ProjectionResponse updatePlace(@RequestParam Long id, @Valid @RequestBody ProjectionPutRequest projectionPutRequest) {
+    public ProjectionReadResponse updatePlace(@RequestParam Long id, @Valid @RequestBody ProjectionPutRequest projectionPutRequest) {
         return projectionPutService.updateProjection(id, projectionPutRequest);
     }
 }

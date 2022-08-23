@@ -1,13 +1,13 @@
 package com.project.cinema.data.crud.mapper;
 
-import com.project.cinema.data.crud.model.response.ProjectionResponse;
+import com.project.cinema.data.crud.model.response.ProjectionReadResponse;
 import com.project.cinema.data.entity.projection.ProjectionEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectionEntityToProjectionResponse {
-    public ProjectionResponse map(ProjectionEntity projectionEntity) {
-       return ProjectionResponse.builder()
+    public ProjectionReadResponse map(ProjectionEntity projectionEntity) {
+       return ProjectionReadResponse.builder()
                 .title(projectionEntity.getTitle())
                 .description(projectionEntity.getDescription())
                 .genre(projectionEntity.getGenre().getGenreName())

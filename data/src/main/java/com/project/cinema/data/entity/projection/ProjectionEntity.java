@@ -1,9 +1,6 @@
 package com.project.cinema.data.entity.projection;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,7 +11,9 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode
 public class ProjectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,5 +37,6 @@ public class ProjectionEntity {
     @ManyToOne
     @JoinColumn(name="genre_id",insertable = false,updatable = false)
     private Genre genre;
+
 
 }

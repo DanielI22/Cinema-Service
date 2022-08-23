@@ -8,6 +8,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode
+@ToString
 public class CancelTicketResponse implements OperationResult {
     private TicketResponse ticket;
 }

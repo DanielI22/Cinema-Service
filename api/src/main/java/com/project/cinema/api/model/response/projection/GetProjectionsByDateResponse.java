@@ -10,6 +10,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class GetProjectionsByDateResponse implements OperationResult {
     private String startProjectionDate;
     private String endProjectionDate;
