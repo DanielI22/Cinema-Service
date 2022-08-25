@@ -1,6 +1,7 @@
 package com.project.cinema.data.crud.model.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
+@Builder
 public class ProjectionCreateRequest {
     @NotNull(message = "The movie id is required")
     private Long movieId;
